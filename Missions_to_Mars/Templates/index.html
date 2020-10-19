@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission to Mars</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+   
+    <style>
+        h1 {
+            background-color: aqua; 
+            text-align: center; }
+    </style>
+
+
+</head>
+<body>
+    <!-- This will be my jumbotron card that prompts users to scrape data-->
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1 class="display-4"> Headed off To MARS </h1>                
+            <hr class="my-4">
+            <p style="text-shadow: -2px -1px 0 rgb(23, 133, 87), 1px -1px 0 rgb(168, 44, 148), -1px 1px 0 rgb(168, 44, 148), 1px 1px 0 rgb(23, 133, 87); text-align: center;">Click the below button to launch!</p>
+            <button type="button"class="btn btn-primary btn-lg btn-block"><a>href="http://127.0.0.1:5000/scrape" role="button"</a>Lift Off!</button>
+          </div> 
+    </div>
