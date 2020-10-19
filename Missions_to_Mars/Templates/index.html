@@ -28,9 +28,60 @@
             <h1 class="display-4"> Headed off To MARS </h1>                
             <hr class="my-4">
             <p style="text-shadow: -2px -1px 0 rgb(23, 133, 87), 1px -1px 0 rgb(168, 44, 148), -1px 1px 0 rgb(168, 44, 148), 1px 1px 0 rgb(23, 133, 87); text-align: center;">Click the below button to launch!</p>
-            <a class="btn btn-primary btn-lg btn-block" style="background-color:#d139d1;" href="http://127.0.0.1:5000/scrape"" role="button"Lift Off!</a>
-  
-
-                <button type="button"class="btn btn-primary btn-lg btn-block><a>href="http://127.0.0.1:5000/scrape" role="button"</a>Lift Off!</button>
+            <a class="btn btn-primary btn-lg btn-block" style="background-color:#d139d1;" href="/scrape_mars.py" role="button">Lift Off!</a>
           </div> 
     </div>
+
+
+    <!-- News Section-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="background-color: black;color:rgb(23, 133, 87)">
+                <h1>Scraped Mars News!</h1>
+                <br>
+                <h2>{{ mars.news_title }}</h2>
+                <br>
+                <h6>{{ mars.news_paragraph }}</h6>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!-- This will be the start of my side-by-side data-->
+    <div class="container">
+        <div class="row">
+            <!-- Left Image-->
+            <div class="col-lg-7"style="background-color: black;color:rgb(168, 44, 148)">
+                <h3>Featured Mars Image</h3>
+                <img src="{{ mars.featured_img }}" style="max-width:100%; max-height: auto;" alt="Scraped Featured Image of Mars">
+            </div>
+            <div class="col-lg-5"style="background-color: black; color: rgb(168, 44, 148)">
+                <h3>Mars Facts</h3>
+                    <div style="font-size: 18px;">
+                        {{mars.facts|safe}}
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This will be my last section that will display the hemispheres-->
+    <h3 style="padding-top: 50px; margin-top: 100px; text-align: center;">Mars Hemispheres</h3>
+        <div class="card-deck">
+            <hr>
+            <div class="col-lg-10">
+                <div class="row">
+                    {% for item in mars.hemispheres %}
+                    <div class="col-md-5"style="text-align:center;">
+                        <div class="card"style="text-align:center;width:500px;margin:auto;">
+                            <img class="card-img-top" src="{{ item.img_url }}"style="max-width:100%; max-height: auto;" />
+                            <div class="card-body">
+                                <p class="card-text">{{ item.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+</body>
+</html>
