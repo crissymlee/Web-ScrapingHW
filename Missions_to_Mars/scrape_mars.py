@@ -15,8 +15,8 @@ def init_browser():
 mars_data = {}
 def scrape_news():
     browser = init_browser()
-    url = 'https://mars.nasa.gov/news/'
-    browser.visit(url)
+    url_1 = 'https://mars.nasa.gov/news'
+    browser.visit(url_1)
 
     #HTML object
     html = browser.html
@@ -25,26 +25,28 @@ def scrape_news():
     #look for snippet
     article_title = soup.find('div',class_='list_text').find('div', class_='content_title').find('a').text
     article_paragraph = soup.find('div',class_='list_text').find('div', class_='article_teaser_body').text
-    article = [article_title,article_paragraph]
     
     #print it
-    return article
+    return article_title
     
 
 #Scrape Mars Images 
 def scrape_image():
     browser = init_browser()
-    url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
-    browser.visit(url)
+    url_2 = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+    browser.visit(url_2)
     
     #HTML object
     html = browser.html
     soup = bs(html,'html.parser')
     
     #Image URL Link
-    base_url = 'https://www.jpl.nasa.gov/'
-    image_path_url = soup.find('div', class_='carousel_container').find('article')['style'].replace(');','')[23:-1]
-    featured_img_url = base_url + image_path_url
+    main_url ='https://www.jpl.nasa.gov'
+    image_url = soup.find('div', class_='carousel_container').find('article')['style'].replace(');','')[1:-1]
+
+    #Create image url link
+    image_url = main_url + image_url
+    print(image_url)
     
     #print it
     return featured_img_url
